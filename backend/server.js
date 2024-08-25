@@ -9,9 +9,6 @@ app.use(express.json());
 app.use('/api/v1/auth',authRoutes);
 app.use(errorResponse)
 
-app.use('/',(req,res)=>{
-    return res.json({message:"Server has been started"});
-})
 dbConnect().then(()=>{
     console.log("db connected successfully");
     app.listen(process.env.PORT,()=>{
