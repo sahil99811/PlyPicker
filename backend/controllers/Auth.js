@@ -1,10 +1,13 @@
 const User = require('../models/User');
 const { generateToken } = require('../utils/generateToken');
 const bcrypt = require('bcrypt');
-
+const createError = require('http-errors');
 const login = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { email, password  } = req.body;
+        if (!email || !password ) {
+            return next(createError(400, 'All fields are required.'));
+        }
         const user = await User.findOne({ email: email.toLowerCase() });
         if (!user) {
             return next(createError(401, 'User not registered. Please sign up.'));
