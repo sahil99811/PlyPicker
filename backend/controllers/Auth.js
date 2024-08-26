@@ -26,7 +26,8 @@ const login = async (req, res, next) => {
             role: user.role
         });
     } catch (error) {
-        next(error); 
+        console.log(error)
+        return next(error);
     }
 };
 
@@ -55,7 +56,8 @@ const register = async (req, res, next) => {
             message: 'Signup successful',
         });
     } catch (error) {
-        next(error); 
+        console.log(error)
+        return next(error);
     }
 };
 

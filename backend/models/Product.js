@@ -20,6 +20,10 @@ const productSchema = new mongoose.Schema({
     department:{
         type:String,
         required:true
+    },
+    createBy:{
+        type:mongoose.Types.ObjectId,
+        ref:"User"
     }
 }, { timestamps: true });
 
